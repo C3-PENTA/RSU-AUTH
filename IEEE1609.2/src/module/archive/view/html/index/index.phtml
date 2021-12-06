@@ -1,0 +1,194 @@
+<div class="content-wrapper">
+
+	<section class="content-header">
+		<h2>Archive</h2>
+	</section>
+	<section class="content">
+		<div class="row">
+			<div class="col-md-10">
+				<div class="box">
+					<div class="box-header"></div>
+					<div class="box-body">
+
+						<section class="sidebar">
+						<ul class="sidebar-menu">
+
+<?php
+// text명이 디렉토리명 그대로 사용하므로 이름 주의, 대소문자 등
+foreach ($ls as $key => $root)
+{
+	//if(isset($root[0]))
+	//{
+		echo "<li class='treeview'> <i class='fa'></i> ROOT ";
+		echo "<ul class='treeview-menu archive'>";
+		//echo "		<li class='treeview'> <a href='#'><i class='fa fa-certificate'></i>ROOT</a>";
+
+		//if(isset($root["ica"]))
+		//{
+			echo "	<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>ica</a>";
+
+			foreach($root as $ica_key => $ica_val)
+			{
+				echo "	<ul class='treeview-menu archive'>";	
+				echo "		<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>".$ica_key."</a>";
+					echo "	<ul class='treeview-menu archive'>";	
+					echo "		<li class='treeview'> <a href='#'><i class='fa fa-certificate'></i>".@$ica_val[0]."</a>";
+
+
+					if(isset($ica_val["pca"]))
+					{
+						echo "	<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>pca</a>";
+
+						foreach($ica_val["pca"] as $pca_key => $pca_val)
+						{
+							echo "	<ul class='treeview-menu archive'>";	
+							echo "		<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>".$pca_key."</a>";
+								echo "	<ul class='treeview-menu archive'>";	
+								echo "		<li class='treeview'> <a href='#'><i class='fa fa-certificate'></i>".@$pca_val[0]."</a>";
+
+								if(isset($pca_val["ident"]))
+								{
+									echo "	<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>ident</a>";
+
+									foreach($pca_val["ident"] as $ident_key => $ident_val)
+									{
+										echo "	<ul class='treeview-menu archive'>";	
+										echo "		<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>".$ident_key."</a>";
+
+										foreach($ident_val as $ident_key1 => $ident_val1)
+										{
+											echo "	<ul class='treeview-menu archive'>";	
+											echo "		<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>".$ident_key1."</a>";
+												echo "	<ul class='treeview-menu archive'>";	
+												echo "		<li class='treeview'> <a href='#'><i class='fa fa-certificate'></i>".@$ident_val1[0]."</a>";
+												echo "		</li>";
+											echo "		</ul>";
+											echo "		</li>";
+											echo "	</ul>";
+										}
+
+										echo "		</li>";
+										echo "	</ul>";
+									}
+								}
+
+								if(isset($pca_val["pseudonym"]))
+								{
+									echo "	<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>pseudonym</a>";
+
+									foreach($pca_val["pseudonym"] as $pseudonym_key => $pseudonym_val)
+									{
+										echo "	<ul class='treeview-menu archive'>";	
+										echo "		<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>".$pseudonym_key."</a>";
+
+										foreach($pseudonym_val as $pseudonym_key1 => $pseudonym_val1)
+										{
+											echo "	<ul class='treeview-menu archive'>";	
+											echo "		<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>".$pseudonym_key1."</a>";
+												echo "	<ul class='treeview-menu archive'>";	
+												echo "		<li class='treeview'> <a href='#'><i class='fa fa-certificate'></i>".@$pseudonym_val1[0]." ~ ".@$pseudonym_val1[count($pseudonym_val1)-1]." (".count($pseudonym_val1).")</a>";
+												echo "		</li>";
+											echo "		</ul>";
+											echo "		</li>";
+											echo "	</ul>";
+										}
+
+										echo "		</li>";
+										echo "	</ul>";
+									}
+								}
+
+								echo "		</li>";
+								echo "	</ul>";
+							echo "		</li>";
+							echo "	</ul>";
+						}
+					}
+
+
+					if(isset($ica_val["eca"]))
+					{
+						echo "	<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>eca</a>";
+
+						foreach($ica_val["eca"] as $eca_key => $eca_val)
+						{
+							echo "	<ul class='treeview-menu archive'>";	
+							echo "		<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>".$eca_key."</a>";
+								echo "	<ul class='treeview-menu archive'>";	
+								echo "		<li class='treeview'> <a href='#'><i class='fa fa-certificate'></i>".@$eca_val[0]."</a>";
+
+								if(isset($eca_val["obeEnrol"]))
+								{
+									echo "	<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>obeEnrol</a>";
+
+									foreach($eca_val["obeEnrol"] as $obeEnrol_key => $obeEnrol_val)
+									{
+										echo "	<ul class='treeview-menu archive'>";	
+										echo "		<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>".$obeEnrol_key."</a>";
+											echo "	<ul class='treeview-menu archive'>";	
+											echo "		<li class='treeview'> <a href='#'><i class='fa fa-certificate'></i>".@$obeEnrol_val[0]."</a>";
+
+											echo "		</li>";
+											echo "	</ul>";
+										echo "		</li>";
+										echo "	</ul>";
+									}
+								}
+
+
+								echo "		</li>";
+								echo "	</ul>";
+							echo "		</li>";
+							echo "	</ul>";
+						}
+					}
+
+
+					if(isset($ica_val["rseEnrol"]))
+					{
+						echo "	<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>rseEnrol</a>";
+
+						foreach($ica_val["rseEnrol"] as $rseEnrol_key => $rseEnrol_val)
+						{
+							echo "	<ul class='treeview-menu archive'>";	
+							echo "		<li class='treeview'> <a href='#'><i class='fa fa-folder-o'></i>".$rseEnrol_key."</a>";
+								echo "	<ul class='treeview-menu archive'>";	
+								echo "		<li class='treeview'> <a href='#'><i class='fa fa-certificate'></i>".@$rseEnrol_val[0]."</a>";
+
+								echo "		</li>";
+								echo "	</ul>";
+							echo "		</li>";
+							echo "	</ul>";
+						}
+					}
+
+
+					echo "		</li>";
+					echo "	</ul>";
+				echo "		</li>";
+				echo "	</ul>";
+			}
+		//}
+
+		echo "</ul>";
+		echo "</li>";
+
+	//}
+
+}
+
+?>
+
+						</ul>
+						</section>
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<script src="/assets/js/archive/archive.js"></script>

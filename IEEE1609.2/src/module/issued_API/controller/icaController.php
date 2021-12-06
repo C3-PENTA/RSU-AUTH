@@ -1,0 +1,164 @@
+<?php
+/**
+* System Monitoring
+**/
+
+namespace module\issued_API\controller;
+use Exception;
+
+class icaController
+{
+    public function indexAction()
+    {
+		// 인증서 조회
+		/*
+		$dir_list = array();
+		exec("ls -lt /workdir/srcs/output/", $output);
+		$output[0] = null;
+		$output = array_filter($output);
+		if(count($output)){
+			foreach($output as $key => $val){
+				$tmp = explode(" ", $val);
+				$dir_list[] = $tmp[8];
+			}	
+		}
+		*/
+		$dir_list = null;
+
+		return array(
+			"dir_list"	=> $dir_list
+		);
+
+    }
+
+    public function submitAction()
+    {
+
+		$dirname = date("Ymd")."T".date("His");
+
+		$app_permissions[] = array(
+			 "psid"	=> (int)35
+			,"ssp"	=> "830001"
+		);
+		$cert_issue_permissions[] = array(
+			 "subject_permissions" => array(
+				"permission_type"	=> "ALL"
+			)
+			,"min_chain_depth"		=> (int)2
+			,"chain_depth_range"	=> (int)0
+			,"eetype"				=> array(
+				 "app"		=> (bool)1
+				,"enrol"	=> (bool)1
+			)
+		);
+		/*
+		foreach($_POST["app_permissions"] as $key => $val)
+		{
+			$app_permissions[] = array(
+				 "psid"	=> (int)$val[0]	
+				,"ssp"	=> $val[1]	
+			);
+		}
+
+		foreach($_POST["cert_issue_permissions"] as $key => $val)
+		{
+			if($val[0] == "EXPLICIT")
+			{
+				$explicit = array( array(
+					 "psid"			=> (int)$val[5]	
+					,"ssp_range" 	=> array(
+						 "range_type"	=> "OPAQUE"
+						,"opaque"		=> $val[6]
+					)
+				));
+
+				$cert_issue_permissions[] = array(
+					 "subject_permissions" => array(
+						 "permission_type"	=> $val[0]
+						,"explicit"				=> $explicit
+					)
+					,"min_chain_depth"		=> (int)$val[1]
+					,"chain_depth_range"	=> (int)$val[2]
+					,"eetype"				=> array(
+						 "app"		=> (bool)$val[3]	
+						,"enrol"	=> (bool)$val[4]	
+					)
+				);
+			}
+			else if($val[0] == "ALL")
+			{
+				$cert_issue_permissions[] = array(
+					 "subject_permissions" => array(
+						"permission_type"	=> $val[0]
+					)
+					,"min_chain_depth"		=> (int)$val[1]
+					,"chain_depth_range"	=> (int)$val[2]
+					,"eetype"				=> array(
+						 "app"		=> (bool)$val[3]	
+						,"enrol"	=> (bool)$val[4]	
+					)
+				);
+			}
+		}
+		*/
+
+		$issuer_cert = "/workdir/srcs/rootca.cert";
+
+		$conf = array(
+			 "cert_type"			=> "explicit"
+			,"issuer_cert_path"		=> $issuer_cert
+			,"output_file_path"		=> "/workdir/srcs/output/ica/".$dirname."/ica.cert"
+			,"cert_id"				=> array(
+				 "type"		=> "hostname"
+				,"value"	=> "testCert"
+			)
+			,"craca_id"				=> "65538e"
+			,"crl_series"			=> (int)2
+			,"validity_period"		=> array(
+				 "begin"	=> date("Y-m-d", time())."T00:00:00"
+				,"duration"	=> array(
+					 "unit"		=> "YEARS"
+					,"value"	=> (int)1
+				)
+			)
+			,"app_permissions"	=> $app_permissions
+			,"cert_issue_permissions" => $cert_issue_permissions
+		);
+
+		$conf = json_encode($conf, JSON_PRETTY_PRINT);
+
+		// create conf file
+		$fp = fopen("/var/www/scms2016gui/public/conf/ica.json", "w");
+		fwrite($fp, $conf);
+		fclose($fp);
+
+		// run
+		chdir("/workdir/srcs");
+		exec("mkdir -p /workdir/srcs/output/ica/".$dirname);
+		exec("/workdir/srcs/cert_tool create-cert /var/www/scms2016gui/public/conf/ica.json 2>&1", $output);
+
+		// error handle
+		if(count($output)>1)
+		{
+			$result = array(
+				 "result" => "error"
+				,"message" => $output[count($output)-1]
+			);	
+
+			echo json_encode($result);
+			die();
+		}
+
+		// compress
+		//exec("zip -jr /var/www/scms2016gui/public/downloads/ica_".$dirname.".zip /workdir/srcs/output/ica/".$dirname);
+
+		$result = array(
+			 "result" => "success"
+			,"download_path"	=> "/workdir/srcs/output/ica/".$dirname."/ica.cert"
+		);
+
+		echo json_encode($result);
+		die();
+    }
+}
+?>

@@ -1,0 +1,171 @@
+<?php
+/**
+* auto focus
+**/
+${"treeview_active_".$this->info->module} = "active";                                   
+${"treeview_active_".$this->info->module."_".$this->info->controller} = "active";
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<?php
+	echo $include_script;	
+	?>
+</head>
+
+<body class="hold-transition skin-black-light sidebar-mini">
+
+<div class="wrapper">
+
+
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><!-- img src="about:blank" title="logo" style="width:160px;" -->Autocrypt CertIssue</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><!-- img src="about:blank" title="logo" style="width:160px;" -->Autocrypt CertIssue</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+  </header>
+
+
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <ul class="sidebar-menu">
+        <li class="header">
+					<p class="title">CertIssue</p>
+					<p class="version">SCMS 2016</p>
+				</li>
+
+
+        <li class="treeview active">
+          <a href="#"> <i class="fa fa-plus-circle"></i> <span>Issuing Certificates</span> </a>
+          <ul class="treeview-menu">
+            <li class="<?=@$treeview_active_issued_root?>">
+							<a href="#"><i class="fa fa-certificate"></i> Root</a>
+							<ul class="treeview-menu">
+								<!-- 
+								<li class="<?=@$treeview_active_issued_pg?>"><a href="/issued/pg"> <i class="fa fa-angle-double-right"></i> PG</a></li>
+								<li class="<?=@$treeview_active_issued_crlg?>"><a href="/issued/crlg"> <i class="fa fa-angle-double-right"></i> CRLG</a></li>
+								-->
+								<li class="<?=@$treeview_active_issued_ica?>"><a href="/issued/ica"> <i class="fa fa-angle-double-right"></i> ICA</a>
+									<ul class="treeview-menu">
+										<li class="<?=@$treeview_active_issued_pca?>"><a href="/issued/pca"> <i class="fa fa-angle-right"></i> PCA</a>
+										<li class="<?=@$treeview_active_issued_eca?>"><a href="/issued/eca"> <i class="fa fa-angle-right"></i> ECA</a>
+											<ul class="treeview-menu">	
+												<li class="<?=@$treeview_active_issued_obeEnrol?>"><a href="/issued/obeEnrol"> <i class="fa fa-angle-double-right"></i> OBE Enrol</a>
+												<li class="<?=@$treeview_active_issued_rseEnrol?>"><a href="/issued/rseEnrol"> <i class="fa fa-angle-double-right"></i> RSE Enrol</a>
+											</ul>
+										<!-- 
+											<ul class="treeview-menu">	
+												<li class="<?=@$treeview_active_issued_obeId?>"><a href="/issued/obeId"> <i class="fa fa-caret-right"></i> OBE ID </a></li>
+												<li class="<?=@$treeview_active_issued_rseApplication?>"><a href="/issued/rseApplication"> <i class="fa fa-caret-right"></i> RSE Application </a></li>
+											</ul>
+										</li>
+										<li class="<?=@$treeview_active_issued_ra?>"><a href="/issued/ra"> <i class="fa fa-angle-right"></i> RA</a></li>
+										-->
+										<!-- 
+											<ul class="treeview-menu">	
+												<li class="<?=@$treeview_active_issued_obeEnrol?>"><a href="/issued/obeEnrol"> <i class="fa fa-caret-right"></i> OBE Enrol </a></li>
+												<li class="<?=@$treeview_active_issued_la?>"><a href="/issued/la"> <i class="fa fa-caret-right"></i> LA </a></li>
+												<li class="<?=@$treeview_active_issued_ma?>"><a href="/issued/ma"> <i class="fa fa-caret-right"></i> MA </a></li>
+											</ul>
+										-->
+										</li>
+									</ul>
+								</li>
+								<!-- 
+								<li class="<?=@$treeview_active_issued_dcm?>"><a href="/issued/dcm"> <i class="fa fa-angle-double-right"></i> DCM</a></li>
+								<li class="<?=@$treeview_active_issued_elector?>"><a href="/issued/elector"><i class="fa fa-angle-double-right"></i> Elector</a>
+								-->
+							</ul>
+						</li>
+            <li class="<?=@$treeview_active_issued_pseudonymBatch?>">
+							<a href="/issued/pseudonymBatch"><i class="fa fa-certificate"></i> Pseudonym Batch</a>
+						</li>
+            <li class="<?=@$treeview_active_issued_identBatch?>">
+							<a href="/issued/identBatch"><i class="fa fa-certificate"></i> Ident Batch</a>
+						</li>
+						<li class="<?=@$treeview_active_issued_rseApplication?>">
+							<a href="/issued/rseApplication"> <i class="fa fa-certificate"></i> RSE Application </a>
+						</li>
+
+          </ul>
+        </li>
+
+        <li class="treeview <?=@$treeview_active_dashboard?>">
+          <a href="/archive"> <i class="fa fa-archive"></i> Archive </a>
+        </li>
+
+
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+
+	<?php
+	echo $contents;
+	?>
+
+</div>
+
+<?php
+echo $include_js;
+?>
+
+
+
+<!-- default modal -->
+<div class="modal fade" id="default-modal" tabindex="1" role="dialog" aria-labelledby="defautModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <!-- div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Default Modal</h4>
+      </div>
+      <div class="modal-body">
+        <p>&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left btn-left" data-dismiss="modal">Button 1</button>
+        <button type="button" class="btn btn-primary btn-right">Button 2</button>
+      </div -->
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+<!-- cert info modal -->
+<div class="modal fade" id="cert-info-modal" tabindex="10" role="dialog" aria-labelledby="certInfoModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Certificate Info</h4>
+      </div>
+      <div class="modal-body">
+        <p>&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left btn-left" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+</body>
+</html>

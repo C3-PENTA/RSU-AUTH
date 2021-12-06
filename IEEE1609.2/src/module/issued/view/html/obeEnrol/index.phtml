@@ -1,0 +1,307 @@
+<div class="content-wrapper">
+	<section class="content-header">
+			<h2>OBE Enrol</h2>
+	</section>
+	<section class="content">
+
+		<div class="row">
+			<div class="col-md-11">
+				<div class="box box-primary">
+					<div class="box-body">
+						<form class="form-horizontal" onsubmit="return false">
+
+                <div class="form-group">
+                  <label class="col-md-3 control-label">
+										Cert Type
+									</label>
+                  <div class="col-md-9">
+										<input type="text" class="form-control" name="cert_type" value="implicit" disabled>
+									</div>
+								</div>
+
+                <div class="form-group">
+                  <label class="col-md-3 control-label">
+										Use Encryption Key
+									</label>
+                  <div class="col-md-9">
+										<div class="radio" style="padding-top:0px;">
+											<label> <input type="radio" name="use_encryption_key" value="true" style="width:15px; height:15px;"/> True </label>
+											<label style="margin-left:35px"> <input type="radio" name="use_encryption_key" value="false" style="width:15px; height:15px;" checked /> False </label>
+										</div>	
+									</div>
+								</div>
+
+                <div class="form-group">
+                  <label class="col-md-3 control-label">
+										Hash Type
+									</label>
+                  <div class="col-md-9">
+										<div class="radio" style="padding-top:0px;">
+											<label> <input type="radio" name="hash_type" value="2" style="width:15px; height:15px;" checked /> Standard </label>
+											<label style="margin-left:35px"> <input type="radio" name="hash_type" value="1" style="width:15px; height:15px;" /> Draft </label>
+										</div>	
+									</div>
+								</div>
+
+                <div class="form-group">
+                  <label class="col-md-3 control-label">
+										Issuer Cert
+									</label>
+                  <div class="col-md-9">
+										<select class="form-control select2-issuer-cert" name="issuer_cert">
+											<option></option>
+											<optgroup label="ECA cert list">
+										<?php
+										foreach($dir_list as $val){
+												echo "<option value='".$val."'>".$val."/eca.cert</option>";		
+										}
+										?>
+											</optgroup>
+										</select>
+									</div>
+								</div>
+
+                <div class="form-group">
+                  <label class="col-md-3 control-label">
+										Cert ID
+									</label>
+                  <div class="col-md-9">
+										<div class="row">
+											<div class="col-md-3">
+												<select class="form-control" name="cert_id_type" readonly>
+													<option value="hostname" selected>hostname</option>
+												</select>
+											</div>
+											<div class="col-md-9">
+												<input type="text" class="form-control col-md-2" name="cert_id_value" placeholder="value" value="CITS-OBE.katech.re.kr">
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+                <div class="form-group">
+                  <label class="col-md-3 control-label">
+										OBE ID
+									</label>
+                  <div class="col-md-9">
+										<input type="text" class="form-control" name="obe_id" value="SAMPLE_OBE">
+									</div>
+								</div>
+
+                <div class="form-group">
+                  <label class="col-md-3 control-label">
+										Craca ID
+									</label>
+                  <div class="col-md-9">
+										<input type="text" class="form-control" name="craca_id" readonly placeholder="Please select issuer cert">
+									</div>
+								</div>
+
+                <div class="form-group">
+                  <label class="col-md-3 control-label">
+										CRL Series
+									</label>
+                  <div class="col-md-9">
+										<select class="form-control select2-crl-series" name="crl_series">
+											<option></option>
+											<optgroup label="CRL Series List">
+												<option value="4" selected>EeEnrollmentCrlSeries: 4</option>
+												<option value="3">EeNonPseudonymCrlSeries: 3</option>
+												<option value="1">ObePseudonymCrlSeries: 1</option>
+												<option value="2">ScmsComponentCrlSeries: 2</option>
+												<option value="256">ScmsSpclComponentCrlSeries: 256</option>
+											</optgroup>
+										</select>
+									</div>
+								</div>
+
+                <div class="form-group">
+                  <label class="col-md-3 control-label">
+										Validity Period
+									</label>
+                  <div class="col-md-9">
+										<div class="row">
+											<div class="col-md-7">
+												<div class="input-group">
+													<input type="text" class="form-control" id="input_daterange" name="start_date" readonly>
+													<div class="input-group-addon" id="daterange-btn">
+														<i class="fa fa-calendar"></i>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-5">
+												<select class="form-control select2-duration" name="validity_period">
+													<option></option>
+													<optgroup label="Duration">
+														<option value="1">1 year</option>
+														<option value="2">2 years</option>
+														<option value="3" selected>3 years</option>
+														<option value="4">4 years</option>
+														<option value="5">5 years</option>
+														<option value="6">6 years</option>
+														<option value="7">7 years</option>
+														<option value="8">8 years</option>
+														<option value="9">9 years</option>
+														<option value="10">10 years</option>
+													</optgroup>
+												</select>
+											</div>
+										</div>
+                  </div>
+                </div>
+
+								<!-- 
+                <div class="form-group">
+                  <label class="col-md-3 control-label">
+										App Permissions
+									</label>
+                  <div class="col-md-9">
+										<button class="btn btn-primary action_app_permissions_add">Add</button>
+
+										<div class="input-group" style="margin-top:3px;">
+											<span class="input-group-addon"><span class="app_per_no">1</span>.</span>
+											<select class="form-control select2-psid" name="app_permissions_psid" style="width:70%">
+												<option></option>
+												<optgroup label="App Permissions PSID">
+													<option value="32">[0x20] BsmPsid: 32</option>
+													<option value="35">[0x23] SecurityMgmtPsid: 35</option>
+													<option value="38">[0x26] MisbehaviorReportingPsid: 38</option>
+													<option value="128">[0x80] DifferentialGpsCorrectionsUncompressedPsid: 128</option>
+													<option value="129">[0x81] DifferentialGpsCorrectionsCompressedPsid: 129</option>
+													<option value="130">[0x82] IntersectionSafetyAndAwarenessPsid: 130</option>
+													<option value="131">[0x83] TravellerInformationAndRoadsideSignagePsid: 131</option>
+													<option value="135">[0x87] WaveServiceAdvertisementPsid: 135</option>
+													<option value="156">[0x88] PeerToPeerCertDistributionPsid: 136</option>
+												</optgroup>
+											</select>
+											<input type="text" class="form-control col-md-2 pull-right" name="app_permissions_ssp" placeholder="ssp" style="width:30%;">
+											<span class="input-group-addon" style="padding:0px; border:none">&nbsp;<button class="btn btn-sm btn-danger action_app_permissions_remove" disabled><i class="fa fa-remove"></i></button></span>
+										</div>
+									</div>
+								</div>
+								-->
+
+                <div class="form-group">
+                  <label class="col-md-3 control-label">
+										Cert Issue Permissions
+									</label>
+                  <div class="col-md-9">
+										<button class="btn btn-primary action_cert_issue_permissions_add">Add</button>
+										<table class="table table-bordered" style="margin-top:3px;">
+										<thead>
+										<tr style="background-color:#f0f0f0">
+											<th rowspan=2 style="width:40px;line-height:4em;text-align:center">#</th>
+											<th rowspan=2 style="line-height:4em;text-align:center">Type</th>
+											<th rowspan=2 style="width:75px;line-height:4em;text-align:center" title="Min Chain Depth">MCD</th>
+											<th rowspan=2 style="width:75px;line-height:4em;text-align:center" title="Chain Depth Range">CDR</th>
+											<th colspan=2 style="text-align:center">EEType</th>
+										</tr>
+										<tr style="background-color:#f0f0f0">
+											<th style="width:75px;text-align:center">App</th>
+											<th style="width:75px;text-align:center">Enrol</th>
+										</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td rowspan=3>
+													<span class="cert_issue_per_no">1</span>.<br /><br />
+													<button class="btn btn-sm btn-danger action_cert_issue_permissions_remove" disabled><i class="fa fa-remove"></i></button>
+												</td>
+												<td rowspan=1>
+													<select class="form-control" name="subject_permissions_type">
+														<option value="">Select Type</option>
+														<option selected>ALL</option>
+														<option>EXPLICIT</option>
+													</select>
+												</td>
+												<td><input type=number class="form-control" name="min_chain_depth" style="width:70px;" value="2"></td>
+												<td><input type=number class="form-control" name="chain_depth_range" style="width:70px;" value="0"></td>
+												<td>
+													<div class="radio" style="padding-top:0px;">
+														<label> <input type="radio" name="eetype_app1" value="true" checked /> True </label><br />
+														<label> <input type="radio" name="eetype_app1" value="false" /> False </label>
+													</div>	
+												</td>
+												<td>
+													 <div class="radio" style="padding-top:0px;">
+														<label> <input type="radio" name="eetype_enrol1" value="true" checked /> True </label><br />
+														<label> <input type="radio" name="eetype_enrol1" value="false" /> False </label>
+													</div>	
+												</td>
+											</tr>
+											<tr>
+												<td colspan=5>
+													<div>
+													<select class="form-control select2-psid" name="cert_issue_psid" style="width:95%" disabled>
+														<option></option>
+														<optgroup label="Explicit PSID">
+															<option value="32">[0x20] BsmPsid: 32</option>
+															<option value="35">[0x23] SecurityMgmtPsid: 35</option>
+															<option value="38">[0x26] MisbehaviorReportingPsid: 38</option>
+															<option value="128">[0x80] DifferentialGpsCorrectionsUncompressedPsid: 128</option>
+															<option value="129">[0x81] DifferentialGpsCorrectionsCompressedPsid: 129</option>
+															<option value="130">[0x82] IntersectionSafetyAndAwarenessPsid: 130</option>
+															<option value="131">[0x83] TravellerInformationAndRoadsideSignagePsid: 131</option>
+															<option value="135">[0x87] WaveServiceAdvertisementPsid: 135</option>
+															<option value="136">[0x88] PeerToPeerCertDistributionPsid: 136</option>
+														</optgroup>
+													</select>
+													<div>
+												</td>
+											</tr>
+											<tr>
+												<td colspan=5>
+													<div>
+													<select class="form-control select2-opaque" name="opaque" style="width:95%" disabled>
+														<optgroup label="Input SSP Range - OPAQUE type">
+														</optgroup>
+													</select>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+										</table>
+									</div>
+								</div>
+						</form>
+					</div>
+
+
+					<div class="box-footer">
+						<button class="btn btn-md btn-primary pull-right action_submit">발급하기</button>
+						<button class="btn btn-md btn-warning pull-right action_loading" style="display:none;cursor:default"><i class="fa fa-refresh fa-spin"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;발급중</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="row" id="callouts-fail" style="display:none">
+			<div class="col-md-9">
+				 <div class="alert alert-danger alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<h4><i class="icon fa fa-ban"></i> 실패!</h4>
+						인증서 발급에 실패하였습니다. <br /><br />
+						<p>
+							message: <br />
+							Danger alert preview. This alert is dismissable. A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.
+						</p>
+					</div>
+			</div>
+		</div>
+		<div class="row" id="callouts-success" style="display:none">
+			<div class="col-md-9">
+				 <div class="alert alert-success alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<h4><i class="icon fa fa-check"></i> 완료!</h4>
+						인증서를 발급하였습니다. <br /><br />
+						<p class="success_message">
+						</p>
+					</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<script src="/assets/js/issued/obeEnrol.js"></script>

@@ -1,0 +1,8 @@
+{
+"CertTool": 
+	{
+	 "toolpath": "/usr/local/bin"
+	,"toolname": "CertIssueTool"
+	,"datadir": "/usr/local/bin"
+	}
+}
