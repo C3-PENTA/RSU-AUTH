@@ -21,4 +21,11 @@ int main(void)
 
 	/*Semaphore initial*/
 	SEMA42_DRV_Init(SEMA42_INSTANCE);
+
+    canIpcHdr->in = 0;
+	canIpcHdr->out = 0;
+	almIpcHdr->in = 0;
+	almIpcHdr->out = 0;
+	idsorigTv.sec = 0;
+	idsorigTv.usec = 0;
 }
