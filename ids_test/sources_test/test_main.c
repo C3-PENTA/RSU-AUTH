@@ -82,3 +82,7 @@ int main(void)
 	   idsDelay(10);
 	}
 #endif
+
+  #ifdef PEX_RTOS_START
+    PEX_RTOS_START();                  /* Startup of the selected RTOS. Macro is defined by the RTOS component. */
+  #endif
