@@ -28,4 +28,21 @@ int main(void)
 	almIpcHdr->out = 0;
 	idsorigTv.sec = 0;
 	idsorigTv.usec = 0;
+
+    	while(1)
+	{
+		/*Semaphore Lock Try*/
+		SEMA42_DRV_LockGate(SEMA42_INSTANCE, SEMA42_GATE);
+		if (SEMA42_DRV_GetGateLocker(SEMA42_INSTANCE, SEMA42_GATE) == (GET_CORE_ID() + 1))
+		{
+#ifdef USE_CAN_DRIVER
+			/*Semaphore Unlock*/
+			idsForwardMsgToIDS();
+			idsSendMsgFromIDS();
+			SEMA42_DRV_UnlockGate(SEMA42_INSTANCE, SEMA42_GATE);
+		}
+		core0Count++;
+		idsDelay(100);
+	}
+#endif
 }
