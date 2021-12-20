@@ -1,0 +1,2 @@
+#if !defined(IDS_PLATFORM_COMMON_H)
+#define IDS_PLATFORM_COMMON_H
