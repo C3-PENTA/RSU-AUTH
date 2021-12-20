@@ -92,3 +92,7 @@ int main(void)
       break;
     }
   }
+
+    return exit_code;
+  /*** Processor Expert end of main routine. DON'T WRITE CODE BELOW!!! ***/
+}
