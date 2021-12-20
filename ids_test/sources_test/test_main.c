@@ -3,6 +3,10 @@
 
 #include "platform_common.h"
 
+/*Semaphore DEFINE*/
+#define SEMA42_INSTANCE		0U
+#define SEMA42_GATE			0U
+
 int main(void)
 {
   /* Write your local variable definition here */
