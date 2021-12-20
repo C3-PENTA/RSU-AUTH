@@ -86,3 +86,9 @@ int main(void)
   #ifdef PEX_RTOS_START
     PEX_RTOS_START();                  /* Startup of the selected RTOS. Macro is defined by the RTOS component. */
   #endif
+
+  for(;;) {
+    if(exit_code != 0) {
+      break;
+    }
+  }
