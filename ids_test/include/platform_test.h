@@ -7,3 +7,8 @@
 typedef struct {
 	__IO uint16_t NUM;          /*NUM OF RECEIVED MSG*/
 } TEST_Type;
+
+typedef struct {
+  __IO uint16_t in;		  /*Ring BUFFER HEADER*/
+  __IO uint16_t out;	  /*RING BUFFER TAIL*/
+} HidsIpcHdr_Type;
