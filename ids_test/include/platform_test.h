@@ -22,3 +22,8 @@ typedef struct {
    __IO uint32_t usec;    /*TIME(microsecond)*/
    __IO uint8_t  data[8]; /*MSG*/
 } CanMsgInfo_Type;
+
+typedef struct {
+  __IO uint16_t HEAD; /*DEFAULT 0x5A5A*/
+  __IO uint16_t TAIL;   /* BUS NUM, BCAN-0x00, CCAN-0x01, ICAN-0x03, MMCAN-0x04, PCAN-0x05*/
+} OVER_Type;
