@@ -13,6 +13,15 @@ typedef struct {
   __IO uint16_t out;	  /*RING BUFFER TAIL*/
 } HidsIpcHdr_Type;
 
+/** Ring Buffer API base address */
+#define HIDS_CAN_IPC                      		(CHECK_CANMODE_BASE + CANMODE_SIZE) //0x4008000A
+/** Ring Buffer API base pointer */
+#define canIpcHdr							    ((HidsIpcHdr_Type *)HIDS_CAN_IPC)
+/** Ring Buffer API base address */
+#define HIDS_ALM_IPC                        	(HIDS_CAN_IPC + HidsIpcHdr_SIZE) //0x4008000E
+/** Ring Buffer API base pointer */
+#define almIpcHdr							    ((HidsIpcHdr_Type *)HIDS_ALM_IPC)
+
 typedef struct {
    __IO uint16_t mark;    /*DEFAULT 0x5A5A*/
    __IO uint8_t  bus;     /* BUS NUM, BCAN-0x00, CCAN-0x01, ICAN-0x03, MMCAN-0x04, PCAN-0x05*/
