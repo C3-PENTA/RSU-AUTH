@@ -13,6 +13,9 @@
 #include "rtc_api_driver.h"
 #include "system_MPC5748G.h"
 
+/* Including needed modules to compile this module/procedure */
+#include "canCom1.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
