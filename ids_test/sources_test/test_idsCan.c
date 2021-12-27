@@ -85,4 +85,9 @@ void idsInitCan(void)
      *  - Bus clock as peripheral engine clock
      */
      FLEXCAN_DRV_Init(INST_CANCOM1, &canCom1_State, &canCom1_InitConfig0);
+
+    for(TxNumber=0; TxNumber<64; TxNumber++)
+    {
+ 	   Tx_Buffer[TxNumber] = 0;
+    }
 }
