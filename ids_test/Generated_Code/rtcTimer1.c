@@ -21,3 +21,17 @@ rtc_timedate_t rtcTimer1_StartTime0 =
     .minutes    =   0U,
     .seconds    =   0U
 };
+
+rtc_alarm_config_t rtcTimer1_AlarmConfig0 = 
+{
+
+    .alarmTime  =
+    {
+        .year       =   2016U,
+        .month      =   1U,
+        .day        =   1U,
+        .hour       =   0U,
+        .minutes    =   0U,
+        .seconds    =   0U
+    }
+};
