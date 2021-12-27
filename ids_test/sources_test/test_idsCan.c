@@ -91,3 +91,8 @@ void idsInitCan(void)
  	   Tx_Buffer[TxNumber] = 0;
     }
 }
+
+struct idsCanMsgBuf recvBuff[8];
+
+status_t recvStatusReady;
+status_t recvStatus;
