@@ -1,3 +1,5 @@
+#include "rtcTimer1.h"
+
 rtc_state_t rtcTimer1_State;
 
 /*! rtcTimer1 configuration structure */
