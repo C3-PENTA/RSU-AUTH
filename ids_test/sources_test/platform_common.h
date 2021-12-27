@@ -14,3 +14,6 @@
 typedef struct {
 	__IO uint16_t NUM;          /*NUM OF RECEIVED MSG*/
 } TEST_Type;
+
+#define COUNT_BASE                        (SHARED_MEMORY_START)
+#define COUNT							  ((TEST_Type *)COUNT_BASE)
