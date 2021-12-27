@@ -73,3 +73,16 @@ void idsSendCanData(uint8_t inst, uint32_t mailbox, uint32_t messageId, uint8_t 
     }
     CANtimeout = 0;
 }
+
+void idsInitCan(void)
+{
+    unit8_t TxNumber=0;
+
+    /*
+     * Initialize FlexCAN driver
+     *  - 8,64 byte payload size
+     *  - FD enabled
+     *  - Bus clock as peripheral engine clock
+     */
+     FLEXCAN_DRV_Init(INST_CANCOM1, &canCom1_State, &canCom1_InitConfig0);
+}
