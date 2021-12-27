@@ -96,3 +96,28 @@ struct idsCanMsgBuf recvBuff[8];
 
 status_t recvStatusReady;
 status_t recvStatus;
+
+struct idsCanMsgBuf *idsCanRecv(void)
+{
+    struct idsCanMsgBuf *retMsgBuf;
+	uint8_t idx=0;
+
+ 	for (idx = 0; idx <= INST_CANCOM8; idx++)
+	{
+		if (recvBuff[idx].recvReq == CAN_MSG_RECV_REQ_DISABLE)
+		{
+			recvStatusReady = FLEXCAN_DRV_Receive(idx, RX_MAILBOX, &(recvBuff[idx].msgBuf));
+			recvBuff[idx].recvReq = CAN_MSG_RECV_REQ_ENABLE;
+		}
+		retMsgBuf = &recvBuff[idx];
+		recvBuff[idx].inst = idx;
+		if ((recvStatus = FLEXCAN_DRV_GetTransferStatus(idx, RX_MAILBOX)) != STATUS_BUSY)
+		{
+			recvBuff[idx].recvReq = CAN_MSG_RECV_REQ_DISABLE;
+			return retMsgBuf;
+		}
+		forLoopCount++;
+	}
+	return NULL;
+   
+}
