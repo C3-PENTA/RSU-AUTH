@@ -1,7 +1,7 @@
 #ifndef IDSCAN_H
 #define IDSCAN_H
 
-#include "test_canCom1.h"
+#include "canCom1.h"
 
 /*CAN DEFINE*/
 #define MASTER
