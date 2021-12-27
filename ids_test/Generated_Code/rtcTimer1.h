@@ -7,4 +7,6 @@ extern rtc_init_config_t rtcTimer1_Config0;
 
 extern rtc_timedate_t rtcTimer1_StartTime0;
 
+extern rtc_alarm_config_t   rtcTimer1_AlarmConfig0;
+
 #endif
