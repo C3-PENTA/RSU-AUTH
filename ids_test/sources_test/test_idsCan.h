@@ -1,6 +1,8 @@
 #ifndef IDSCAN_H
 #define IDSCAN_H
 
+#include "test_canCom1.h"
+
 struct idsCanMsgBuf
 {
 	flexcan_msgbuff_t msgBuf;
