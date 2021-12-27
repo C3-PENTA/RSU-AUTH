@@ -55,6 +55,10 @@ void idsSendCanData(uint8_t inst, uint32_t mailbox, uint32_t messageId, uint8_t 
 	   .fd_padding  = 0U
     };
 
+    uint8_t Tx_Buffer[64] = {0, };
+    uint16_t CANtimeout = 0;
+    void idsSendCanData(uint8_t inst, uint32_t mailbox, uint32_t messageId, uint8_t * data, uint32_t len)
+
     /* Execute send non-blocking */
     if(messageId != 0x4c1 || messageId != 0x4c2)
     {
