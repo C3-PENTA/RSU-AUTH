@@ -33,5 +33,8 @@ rtc_alarm_config_t rtcTimer1_AlarmConfig0 =
         .hour       =   0U,
         .minutes    =   0U,
         .seconds    =   0U
-    }
+    },
+
+    .repetitionInterval  =       0UL,
+
 };
