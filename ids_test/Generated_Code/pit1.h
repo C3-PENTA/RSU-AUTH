@@ -11,9 +11,9 @@
  */
 
 /* Include inherited beans */
-#include "clockMan1.h"
+// #include "clockMan1.h"
 #include "Cpu.h"
-#include "pit_driver.h"
+// #include "pit_driver.h"
 
 /*! Device instance number */
 #define INST_PIT1 (0U)
