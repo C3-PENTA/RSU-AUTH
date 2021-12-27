@@ -22,3 +22,7 @@ typedef struct {
   __IO uint16_t RM;			  /*RECIEVE*/
   __IO uint16_t TM;		      /*TRANSMIT*/
 } CANMODE_Type;
+
+/* Ring Buffer API base address */
+#define HIDS_CAN_IPC                      		(CHECK_CANMODE_BASE + CANMODE_SIZE)
+#define canIpcHdr							    ((HidsIpcHdr_Type *)HIDS_CAN_IPC)
