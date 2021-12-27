@@ -36,3 +36,11 @@ typedef struct {
    __IO uint32_t usec;
    __IO uint8_t  data[8];
 } CanMsgInfo_Type;
+
+typedef struct {
+  __IO uint32_t mark:16; 
+  __IO uint32_t bus:8;   
+  __IO uint32_t dlc:8;  
+  __IO uint32_t mid:16;
+  __IO uint8_t  data[8];
+} AlmMsgInfo_Type;
