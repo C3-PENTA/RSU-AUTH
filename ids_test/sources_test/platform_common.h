@@ -26,3 +26,13 @@ typedef struct {
 /* Ring Buffer API base address */
 #define HIDS_CAN_IPC                      		(CHECK_CANMODE_BASE + CANMODE_SIZE)
 #define canIpcHdr							    ((HidsIpcHdr_Type *)HIDS_CAN_IPC)
+
+typedef struct {
+   __IO uint16_t mark;
+   __IO uint8_t  bus;
+   __IO uint8_t  dlc;
+   __IO uint32_t mid;
+   __IO uint32_t sec;
+   __IO uint32_t usec;
+   __IO uint8_t  data[8];
+} CanMsgInfo_Type;
