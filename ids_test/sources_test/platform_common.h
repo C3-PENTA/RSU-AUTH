@@ -17,3 +17,8 @@ typedef struct {
 
 #define COUNT_BASE                        (SHARED_MEMORY_START)
 #define COUNT							  ((TEST_Type *)COUNT_BASE)
+
+typedef struct {
+  __IO uint16_t RM;			  /*RECIEVE*/
+  __IO uint16_t TM;		      /*TRANSMIT*/
+} CANMODE_Type;
