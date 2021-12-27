@@ -36,5 +36,6 @@ rtc_alarm_config_t rtcTimer1_AlarmConfig0 =
     },
 
     .repetitionInterval  =       0UL,
-
+    .numberOfRepeats     =       0UL,
+    .repeatForever       =       false
 };
