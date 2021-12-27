@@ -11,3 +11,13 @@ rtc_init_config_t rtcTimer1_Config0 =
     .freezeEnable               =   false,
     .nonSupervisorAccessEnable  =   true
 };
+
+rtc_timedate_t rtcTimer1_StartTime0 =
+{
+    .year       =   2016U,
+    .month      =   1U,
+    .day        =   1U,
+    .hour       =   0U,
+    .minutes    =   0U,
+    .seconds    =   0U
+};
