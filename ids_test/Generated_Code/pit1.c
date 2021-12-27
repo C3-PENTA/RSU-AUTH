@@ -3,8 +3,8 @@
 const pit_config_t pit1_InitConfig =
 {
     .enableStandardTimers = true,
-    .enableRTITimer = true,
-    .stopRunInDebug = true
+    .enableRTITimer = false,
+    .stopRunInDebug = false
 };
 
 pit_channel_config_t pit1_ChnConfig0 =
