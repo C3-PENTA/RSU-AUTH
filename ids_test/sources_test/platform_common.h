@@ -37,6 +37,9 @@ typedef struct {
    __IO uint8_t  data[8];
 } CanMsgInfo_Type;
 
+#define CanMsgInfo_BASE                        (HIDS_ALM_IPC + HidsIpcHdr_SIZE)
+#define CanMsgInfo							   ((CanMsgInfo_Type *)CanMsgInfo_BASE)
+
 typedef struct {
   __IO uint32_t mark:16; 
   __IO uint32_t bus:8;   
